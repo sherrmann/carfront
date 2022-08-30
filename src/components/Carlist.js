@@ -10,6 +10,16 @@ function Carlist() {
         {field: 'color', headerName: 'Color', width: 200},
         {field: 'year', headerName: 'Year', width: 150},
         {field: 'price', headerName: 'Price', width: 150},
+        {
+            field: '_links.self.href',
+            headerName: '',
+            sortable: false,
+            filterable: false,
+            renderCell: row =>
+            <button
+                onClick={ () => onDelClick(row.id)}>Delete
+                </button>
+    }
     ]
     useEffect( () => {
         fetch(SERVER_URL + 'api/cars')
@@ -18,7 +28,7 @@ function Carlist() {
         .catch(err => console.error(err));
     }, []);
     return (
-        <div style={{ height: 500, width: '80%' }}>
+        <div style={{ height: 500, width: '100%' }}>
             <DataGrid
                 rows={cars}
                 columns={columns}
