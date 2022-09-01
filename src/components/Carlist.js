@@ -5,11 +5,11 @@ import { DataGrid } from '@mui/x-data-grid';
 function Carlist() {
     const [cars, setCars] = useState([]);
     const columns = [
-        {field: 'brand', headerName: 'Brand', width: 200},
-        {field: 'model', headerName: 'Model', width: 200},
-        {field: 'color', headerName: 'Color', width: 200},
-        {field: 'year', headerName: 'Year', width: 150},
-        {field: 'price', headerName: 'Price', width: 150},
+        {field: 'brand', headerName: 'Brand', width: 100},
+        {field: 'model', headerName: 'Model', width: 100},
+        {field: 'color', headerName: 'Color', width: 100},
+        {field: 'year', headerName: 'Year', width: 100},
+        {field: 'price', headerName: 'Price', width: 100},
         {
             field: '_links.self.href',
             headerName: '',
@@ -22,11 +22,19 @@ function Carlist() {
     }
     ]
     useEffect( () => {
+        fetchCars();
+    }, []);
+    const fetchCars = () => {
         fetch(SERVER_URL + 'api/cars')
         .then(response => response.json())
         .then(data => setCars(data._embedded.cars))
         .catch(err => console.error(err));
-    }, []);
+    }
+    const onDelClick = (url) => {
+        fetch(url, {method: 'DELETE'})
+        .then(response => fetchCars())
+        .catch(err => console.error(err))
+    }
     return (
         <div style={{ height: 500, width: '100%' }}>
             <DataGrid
