@@ -40,6 +40,7 @@ function Carlist() {
             <DataGrid
                 rows={cars}
                 columns={columns}
+                disableSelectionOnClick={true}
                 getRowId={ row => row._links.self.href}/>
         </div>
     );
