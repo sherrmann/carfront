@@ -32,6 +32,7 @@ function Carlist() {
         .catch(err => console.error(err));
     }
     const onDelClick = (url) => {
+        if (window.confirm("Are you sure to delete?")) {
         fetch(url, {method: 'DELETE'})
         .then(response => {
             fetchCars();
@@ -39,6 +40,7 @@ function Carlist() {
         })
         .catch(err => console.error(err))
     }
+}
     const [open, setOpen] = useState(false);
     return (
         <div style={{ height: 500, width: '100%' }}>
