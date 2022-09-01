@@ -35,8 +35,13 @@ function Carlist() {
         if (window.confirm("Are you sure to delete?")) {
         fetch(url, {method: 'DELETE'})
         .then(response => {
+            if (response.ok) {
             fetchCars();
             setOpen(true);
+            }
+            else {
+                alert('Something went wrong!');
+            }
         })
         .catch(err => console.error(err))
     }
