@@ -5,6 +5,7 @@ import { Grid, Snackbar } from "@mui/material";
 import AddCar from "./AddCar.js";
 import EditCar from "./EditCar.js";
 import { GridToolbarContainer, GridToolbarExport, gridClasses } from '@mui/x-data-grid';
+import Stack from "@mui/material/Stack";
 
 function Carlist() {
     const [cars, setCars] = useState([]);
@@ -107,7 +108,9 @@ function Carlist() {
         }
     return (
         <React.Fragment>
+            <Stack mt={2} mb={2}>
             <AddCar addCar={addCar} />
+            </Stack>
         <div style={{ height: 500, width: '100%' }}>
             <DataGrid
                 rows={cars}
