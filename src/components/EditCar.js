@@ -3,6 +3,7 @@ import { Dialog } from '@mui/material';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
 
 function EditCar(props) {
     const [open, setOpen] = useState(false);
@@ -38,7 +39,7 @@ function EditCar(props) {
 
     return(
     <div>
-        <button onClick={handleClickOpen}>Edit</button>
+        <Button onClick={handleClickOpen}>Edit</Button>
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Edit car</DialogTitle>
             <DialogContent>
@@ -49,8 +50,8 @@ function EditCar(props) {
                 <input placeholder="Price" name="price" value={car.price} onChange={handleChange}/><br/>
             </DialogContent>
             <DialogActions>
-                <button onClick={handleClose}>Cancel</button>
-                <button onClick={handleSave}>Save</button>
+                <Button onClick={handleClose}>Cancel</Button>
+                <Button onClick={handleSave}>Save</Button>
             </DialogActions>
         </Dialog>
     </div>
