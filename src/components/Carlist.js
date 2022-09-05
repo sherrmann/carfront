@@ -6,6 +6,9 @@ import AddCar from "./AddCar.js";
 import EditCar from "./EditCar.js";
 import { GridToolbarContainer, GridToolbarExport, gridClasses } from '@mui/x-data-grid';
 import Stack from "@mui/material/Stack";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete"
+import { Delete } from "@mui/icons-material";
 
 function Carlist() {
     const [cars, setCars] = useState([]);
@@ -32,9 +35,9 @@ function Carlist() {
             sortable: false,
             filterable: false,
             renderCell: row =>
-            <button
-                onClick={ () => onDelClick(row.id)}>Delete
-                </button>
+            <IconButton onClick={ () => onDelClick(row.id)}>
+                <DeleteIcon color="error" />
+                </IconButton>
     }
     ]
     useEffect( () => {
