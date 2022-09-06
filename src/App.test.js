@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+// renders App, fire "New Car", check if dialog contains "New Car"
+test('open add car modal form', async () => {
+render(<App />);
+fireEvent.click(screen.getByText('New Car'));
+expect(screen.getByRole('dialog')).toHaveTextContent('New car');
 });
