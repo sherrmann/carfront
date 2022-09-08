@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { SERVER_URL } from '../constants.js'
 import { DataGrid } from '@mui/x-data-grid';
-import { Grid, Snackbar } from "@mui/material";
+import { Snackbar } from "@mui/material";
 import AddCar from "./AddCar.js";
 import EditCar from "./EditCar.js";
 import { GridToolbarContainer, GridToolbarExport, gridClasses } from '@mui/x-data-grid';
 import Stack from "@mui/material/Stack";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete"
-import { Delete } from "@mui/icons-material";
 
 function Carlist() {
     // contains cars received from backend
