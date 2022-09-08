@@ -107,10 +107,14 @@ function Carlist() {
 
     // update car
     const updateCar = (car, link) => {
+        const token = sessionStorage.getItem("jwt");
         fetch(link,
             {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token
+                },
                 body: JSON.stringify(car)
             })
             .then(response => {
