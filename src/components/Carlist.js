@@ -65,7 +65,10 @@ function Carlist() {
     // handle delete 
     const onDelClick = (url) => {
         if (window.confirm("Are you sure to delete?")) {
-            fetch(url, { method: 'DELETE' })
+            const token = sessionStorage.getItem("jwt");
+            fetch(url, {
+                method: 'DELETE',
+                headers: { Authorization : token} })
                 .then(response => {
                     if (response.ok) {
                         fetchCars();
@@ -81,10 +84,14 @@ function Carlist() {
 
     // add a car
     const addCar = (car) => {
+        const token = sessionStorage.getItem("jwt");
         fetch(SERVER_URL + 'api/cars',
             {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token
+                },
                 body: JSON.stringify(car)
             })
             .then(response => {
